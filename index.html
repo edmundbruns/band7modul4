@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Band 7, Modul 4: Barrieren abbauen, Netzwerke und Empowerment</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#172033;--muted:#5b6475;--line:#d7dcea;--accent:#1f4e79;--ok:#1d6b42;--warn:#8a5a00;--bad:#8b1e1e;--soft:#eef5fb;--violet:#f8f4ff}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.55} a{color:var(--accent)}
+header{background:linear-gradient(135deg,#173b5f,#1f4e79);color:white;padding:28px 24px} header h1{margin:.2rem 0;font-size:clamp(1.45rem,3vw,2.35rem)} header p{max-width:1040px;margin:.3rem 0;color:#e7edf6}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:20px;padding:20px;max-width:1500px;margin:auto}.layout.full{grid-template-columns:1fr}
+nav{position:sticky;top:16px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 4px 18px rgba(0,0,0,.06)}nav.hidden{display:none!important}
+.navbtn{display:block;width:100%;text-align:left;margin:6px 0;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)!important;cursor:pointer;font-weight:650}.navbtn.locked{opacity:.72;cursor:not-allowed;background:#f1f2f5;color:#5b6475!important}.navbtn.done{border-color:#7fc499;background:#eef9f1;color:#173b25!important}.navbtn.active{outline:3px solid #b7cde4;background:#eef5fb;color:#102033!important}
+main{min-width:0}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px;box-shadow:0 4px 18px rgba(0,0,0,.05)}.section{display:none}.section.active{display:block}.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+button{border:0;border-radius:10px;background:var(--accent);color:white;padding:10px 14px;cursor:pointer;font-weight:650}button.secondary{background:#596579}button:disabled{opacity:.75;cursor:not-allowed}.progress{height:14px;background:#e3e7ef;border-radius:20px;overflow:hidden;margin:10px 0}#bar{height:100%;width:0;background:#327d4f}
+.theory,.task,.case,.nds,.warn,.hint,.linebox,.solution,.analysis,.feedback,.competence,.certificate,.printcard,.science,.method,.errorbox{border-radius:14px;padding:14px;margin:14px 0;border:1px solid var(--line);background:#fff}.theory{background:#f9fbff}.task{background:#fffdf6;border-color:#eadca6}.case{background:#f6fbf8;border-color:#b8d9c4}.nds{background:#eef5fb;border-color:#a8c4df}.warn{background:#fff3f3;border-color:#e3a5a5}.hint,.linebox{background:#f3f6f9}.solution{background:#eef9f1;border-color:#9ed0aa}.analysis{background:#f8f4ff;border-color:#c9b5ef}.feedback{background:#f4f6f9}.science{background:#f8f4ff;border-color:#c9b5ef}.method{background:#f6fbf8;border-color:#b8d9c4}.errorbox{background:#fff8ee;border-color:#e8c58a}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.hidden{display:none!important}textarea,select,input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin:8px 0;background:white}textarea{min-height:120px;resize:vertical}label{display:block;margin:8px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;background:white}th,td{border:1px solid var(--line);padding:9px;vertical-align:top}th{background:#eef3f8}.q{border:1px solid var(--line);border-radius:12px;padding:12px;margin:12px 0;background:white}.q label{display:block;margin:6px 0}.bad{color:var(--bad);font-weight:700}.good{color:var(--ok);font-weight:700}.warningText{color:var(--warn);font-weight:700}.lines{height:58px;border-bottom:1px solid #999}.small{font-size:.93rem;color:var(--muted)}
+footer{padding:30px;text-align:center;color:var(--muted)}:focus-visible{outline:3px solid #ffbf47;outline-offset:2px}
+
+.header-submit-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:16px}
+.header-submit-controls label{display:block;min-width:220px;max-width:310px;font-weight:650;color:#fff}
+.header-submit-controls label.header-consent{display:flex;align-items:center;gap:8px;min-width:280px;max-width:430px;line-height:1.25}
+.header-submit-controls label.header-consent input{margin:0;width:auto}
+.header-submit-controls input{margin-top:6px;color:var(--ink)}
+.header-submit-controls button{background:#327d4f}
+.header-send-status{color:#e7edf6;font-weight:650;min-width:260px;padding:10px 0}
+.header-send-status.badmsg{color:#ffe2e2}
+.header-send-status.goodmsg{color:#e9ffe9}
+
+@media(max-width:900px){.layout{grid-template-columns:1fr;padding:10px}nav{position:relative;top:auto}.grid2,.grid3{grid-template-columns:1fr}}
+@media print{nav,.controls,button,.progress,#sendStatus,#autosave{display:none!important}body{background:white}.layout{display:block;padding:0}.card{box-shadow:none;border:0;page-break-inside:avoid}.section{display:block!important}.printcard{break-inside:avoid;page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<p>Schulsozialarbeit Niedersachsen, Band 7: Inklusion, Armut, Migration und Teilhabe</p>
+<h1>Band 7, Modul 4: Barrieren abbauen, praktische Unterstützung, Netzwerke und Empowerment</h1>
+<p>Abschlussmodul zu Teilhabestrukturen, würdesensibler Unterstützung, Netzwerklogik, Empowerment, Datenschutz und Verstetigung im schulischen Alltag.</p>
+<div class="header-submit-controls" role="region" aria-label="Name, E-Mail und Online-Abgabe">
+<label>Name für Zertifikat<input id="learnerName" type="text" placeholder="Name" autocomplete="name"></label>
+<label>E-Mail<input id="userEmail" type="email" placeholder="name@example.de" autocomplete="email"></label>
+<label class="header-consent"><input type="checkbox" id="privacyConfirm" onchange="saveField('privacyConfirm')"> Keine identifizierenden Falldaten enthalten</label>
+<label class="header-consent"><input type="checkbox" id="sendConfirm" onchange="saveField('sendConfirm')"> Online-Übermittlung zustimmen</label>
+<button type="button" onclick="manualSave()">Zwischenspeichern</button>
+<button type="button" onclick="sendData()">Absenden</button>
+<span id="sendStatusTop" class="header-send-status" aria-live="polite"></span>
+</div>
+</header>
+<div class="layout" id="layout">
+<nav id="nav" aria-label="Modulnavigation">
+<strong>Navigation</strong>
+<div class="progress"><div id="bar"></div></div>
+<p id="progressText">0 / 14 abgeschlossen</p>
+<p class="hint small">Abschnitte werden nacheinander freigeschaltet. Pflichtfelder werden lokal im Browser gespeichert.</p>
+<div id="navButtons"></div>
+</nav>
+<main>
+<div class="controls">
+<button onclick="toggleNav()">Navigation ein/aus</button>
+<button class="secondary" onclick="resetProgress()">Fortschritt zurücksetzen</button>
+<button class="secondary" onclick="window.print()">Drucken / PDF</button>
+
+<span id="autosave" class="small">Auto-Save bereit</span>
+</div>
+
+<section class="card section" data-title="Vor dem Start: Einordnung, Lernziele, Prüfungslogik">
+<div class="theory">
+<h2>Modulbeschreibung</h2>
+<p>Dieses Modul schließt Band 7 ab. Es bündelt die Perspektiven aus Inklusion, Armut, Migration, Mehrsprachigkeit und Teilhabe in eine praktische Frage: Wie kann Schulsozialarbeit Barrieren im Alltag erkennen, abbauen, Netzwerke aktivieren und Schüler:innen stärken, ohne sie zu beschämen oder Verantwortung falsch zu verschieben?</p>
+<p>Der Schwerpunkt liegt auf Verfahren, Strukturen und Haltungen. Nicht die einzelne „Problemlage“ steht im Zentrum, sondern die professionelle Gestaltung von Zugängen, Würde, Unterstützung, Beteiligung und Verstetigung.</p>
+</div>
+<div class="grid2">
+<div class="theory"><h3>Kompetenzziele</h3><ul>
+<li>Teilhabebarrieren in Schule, Ganztag, Familie und Sozialraum nicht-zuschreibend analysieren.</li>
+<li>praktische Unterstützung würdesensibel, datenschutzsensibel und alltagstauglich planen.</li>
+<li>Netzwerke, Zuständigkeiten und Grenzen der Schulsozialarbeit klären.</li>
+<li>Empowerment von Verantwortungsverschiebung unterscheiden.</li>
+<li>Unterstützungswege in verlässliche Teilhabestrukturen übersetzen.</li>
+<li>Wirkung, Risiken und Nebenwirkungen von Unterstützung prüfen.</li>
+</ul></div>
+<div class="theory"><h3>Workload und Prüfungsleistung</h3><table><tr><th>Bestandteil</th><th>Aufwand</th></tr><tr><td>Lesen und Bearbeiten</td><td>3 Stunden</td></tr><tr><td>Pflichtaufgaben / Fallwerkstatt</td><td>4 Stunden</td></tr><tr><td>Quiz / Gelingensnachweis</td><td>1 Stunde</td></tr><tr><td>Transferauftrag</td><td>3 Stunden</td></tr><tr><td>Portfolio / Reflexion</td><td>1 Stunde</td></tr><tr><th>Gesamt</th><th>12 Stunden</th></tr></table><p>Abschluss: alle Abschnitte, Quiz mit mindestens 80 Prozent, strukturierter Transferauftrag, Selbsteinschätzung nach der Bearbeitung.</p></div>
+</div>
+<div class="nds"><strong>Rechtlich-fachlicher Orientierungsrahmen:</strong> § 13a SGB VIII beschreibt Schulsozialarbeit als sozialpädagogische Angebote am Ort Schule in Zusammenarbeit mit Schule. In Niedersachsen sind RZI relevante Beratungs- und Unterstützungsstrukturen im Kontext inklusiver Schule. Bei finanziellen Teilhabebarrieren können Leistungen des Bildungs- und Teilhabepakets eine Rolle spielen. Lokale Zuständigkeiten sind vor Ort zu prüfen.</div>
+<div class="science"><h3>Wissenschaftsbox: Barrierenabbau als professionelle Strukturarbeit</h3><p>Soziale Arbeit orientiert sich an Menschenrechten, sozialer Gerechtigkeit, gemeinsamer Verantwortung und Achtung der Vielfalt. Für Schulsozialarbeit bedeutet das: Teilhabe wird nicht allein durch individuelle Beratung hergestellt. Sie braucht verlässliche, würdesensible und überprüfbare Strukturen im Alltag der Schule.</p></div>
+<div class="warn"><strong>Lernvertrag:</strong> Verwenden Sie keine echten Namen, Diagnosen, Adressen, Aktenzeichen oder eindeutig identifizierenden Falldaten. Arbeiten Sie mit anonymisierten oder fiktiven Beispielen. Unterstützung darf nicht öffentlich markiert, beschämend oder kontrollierend gestaltet werden.</div>
+<div class="task"><h3>Selbsteinschätzung vor dem Start</h3><p>Bewerten Sie sich selbst von 1 = unsicher bis 5 = sicher.</p>
+<label>Ich kann Teilhabebarrieren nicht-zuschreibend erkennen.<select id="pre1" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+<label>Ich kann praktische Unterstützung würdesensibel planen.<select id="pre2" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+<label>Ich kann Netzwerk, Zuständigkeit und Datenschutz klären.<select id="pre3" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+<label>Ich kann Empowerment von Verantwortungsverschiebung unterscheiden.<select id="pre4" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+</div>
+</section>
+
+<section class="card section" data-title="1. Vom Problem zum Zugang">
+<div class="theory"><h2>Barrieren abbauen heißt: Zugang herstellen</h2>
+<p>Professioneller Barrierenabbau beginnt mit einer anderen Frage. Nicht: „Was stimmt mit dem Kind oder der Familie nicht?“ Sondern: „Was verhindert Zugang, Sicherheit, Beteiligung, Anerkennung oder Zugehörigkeit?“</p>
+<table><tr><th>Barriere</th><th>Beispiel</th><th>Möglicher Abbau</th></tr><tr><td>finanziell</td><td>Klassenfahrt, Mittagessen, AG-Material</td><td>diskrete Unterstützung, Materialpool, BuT-Weg klären</td></tr><tr><td>sprachlich</td><td>Informationen werden nicht verstanden</td><td>einfache Sprache, Visualisierung, Sprachmittlung</td></tr><tr><td>sozial</td><td>Kind bleibt in Pause oder Mensa allein</td><td>Buddy, Gruppenstruktur, sichere Ansprechperson</td></tr><tr><td>organisatorisch</td><td>Anmeldungen sind kompliziert</td><td>Lotsenlogik, Fristenübersicht, Hilfe beim Formular</td></tr><tr><td>emotional</td><td>Angst vor Bloßstellung</td><td>vertrauliche Wege, würdesensible Ansprache</td></tr><tr><td>digital</td><td>Informationen nur online</td><td>mehrere Kommunikationswege, Ausdrucke, persönliche Erklärung</td></tr></table></div>
+<div class="science"><h3>Fachlicher Mindeststandard</h3><p>Barrierenabbau ist kein Gefallen und keine Sonderbehandlung. Er ist Teil eines teilhabeorientierten professionellen Auftrags. Gerechtigkeit bedeutet nicht, dass alle exakt gleich behandelt werden, sondern dass Zugänge so gestaltet werden, dass Mitmachen tatsächlich möglich wird.</p></div>
+<div class="task"><label for="t1">Pflichtaufgabe: Beschreiben Sie an einem anonymisierten Beispiel, welche Barriere Teilhabe verhindert und wie diese Barriere praktisch abgebaut werden könnte. Nutzen Sie mindestens drei Begriffe: Zugang, Würde, Barriere, Teilhabe, Unterstützung, Netzwerk.</label><textarea id="t1" data-required="true" data-min="560"></textarea><button onclick="saveField('t1'); analyzeText('t1')">Antwort prüfen</button><div id="analysis_t1" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="2. Würdesensible Unterstützung">
+<div class="theory"><h2>Praktische Unterstützung ohne Beschämung</h2><p>Unterstützung wirkt nur dann teilhabefördernd, wenn sie nicht sichtbar markiert oder beschämt. Schulsozialarbeit achtet auf diskrete Zugänge, allgemeine Informationen, klare Verfahren und sichere Kommunikationswege.</p>
+<table><tr><th>Problematische Praxis</th><th>Würdesensible Alternative</th></tr><tr><td>„Wer nicht bezahlt hat, bleibt nach der Stunde.“</td><td>allgemeiner Hinweis an alle mit vertraulicher Kontaktmöglichkeit</td></tr><tr><td>öffentlich sichtbare Sonderliste</td><td>geschützte interne Klärung nach Zuständigkeit</td></tr><tr><td>Kind als Bote für Geldfragen nutzen</td><td>Sorgeberechtigte direkt, respektvoll und diskret kontaktieren</td></tr><tr><td>Unterstützung als Ausnahme markieren</td><td>Unterstützung als normales schulisches Verfahren erklären</td></tr><tr><td>moralische Bewertung der Familie</td><td>Barriere und Zugang prüfen</td></tr></table></div>
+<div class="method"><h3>Würdeschutz-Ampel</h3><table><tr><th>Stufe</th><th>Beispiel</th><th>Bewertung</th></tr><tr><td><span class="good">Grün</span></td><td>Info an alle: „Bei Kostenfragen können Sie sich vertraulich melden.“</td><td>geeignet</td></tr><tr><td><span class="warningText">Gelb</span></td><td>Einzelgespräch mit Sorgeberechtigten zu Kosten und Unterstützung</td><td>gut vorbereiten</td></tr><tr><td><span class="bad">Rot</span></td><td>Nachfrage vor Klasse, sichtbare Zahlungsliste, Sonderbehandlung</td><td>vermeiden</td></tr></table></div>
+<div class="task"><label for="t2">Pflichtaufgabe: Entwickeln Sie drei würdesensible Formulierungen für Unterstützungsangebote bei Kosten, Material, Ausflügen oder Ganztag. Grenzen Sie ab, welche Formulierungen oder Verfahren beschämend wären.</label><textarea id="t2" data-required="true" data-min="600"></textarea><button onclick="saveField('t2'); analyzeText('t2')">Antwort prüfen</button><div id="analysis_t2" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="3. Netzwerklogik und Rollenklärung">
+<div class="theory"><h2>Netzwerklogik: Wer kann was beitragen?</h2><p>Barrierenabbau gelingt selten durch eine Person allein. Schulsozialarbeit kann Bedarfe sichtbar machen, lotsen, koordinieren und Brücken bauen. Sie ersetzt aber keine Fachstellen und bewilligt keine Leistungen eigenständig.</p>
+<table><tr><th>Akteur</th><th>Beitrag</th><th>Grenze</th></tr><tr><td>Schulsozialarbeit</td><td>Beratung, Lotsenfunktion, Teilhabecheck, Netzwerkaktivierung</td><td>keine Leistungsbewilligung, keine Therapie, keine sonderpädagogische Diagnostik</td></tr><tr><td>Klassenleitung</td><td>Alltagsbeobachtung, Unterrichtsbezug, Rückmeldung</td><td>nicht allein für soziale Barrieren zuständig</td></tr><tr><td>Schulleitung</td><td>Rahmen, Genehmigung, Ressourcenklarheit, Datenschutzverfahren</td><td>nicht jede Einzelfallkommunikation</td></tr><tr><td>Ganztag / AG</td><td>Beobachtung in Mensa, AG, Freispiel, Übergängen</td><td>keine Falldetails per Messenger</td></tr><tr><td>Förderverein / Schulträger</td><td>Material, Zuschüsse, Räume, Strukturhilfe</td><td>nur nach lokalen Regeln</td></tr><tr><td>RZI / Beratung</td><td>Beratung zu Inklusion und Unterstützungsbedarf</td><td>nicht für alle sozialen Fragen zuständig</td></tr><tr><td>Jugendhilfe / Beratungsstellen</td><td>Hilfen, Beratung, Schutz- und Unterstützungswege</td><td>Zuständigkeit und Datenschutz klären</td></tr><tr><td>Schulpsychologie</td><td>psychologische Beratung und Unterstützung im schulischen Kontext</td><td>ersetzt keine sozialpädagogische Alltagsbegleitung</td></tr></table></div>
+<div class="nds"><strong>Niedersachsen-Bezug:</strong> RZI sind in Niedersachsen Beratungs- und Unterstützungsstrukturen für inklusive Schule. Für Schulsozialarbeit bleibt wichtig: beraten, lotsen, vernetzen, Zuständigkeiten klären, aber keine fremden Fachentscheidungen übernehmen.</div>
+<div class="task"><label for="t3">Pflichtaufgabe: Erstellen Sie für einen anonymisierten Unterstützungsbedarf eine Netzwerklandkarte. Wer muss informiert, beteiligt oder angefragt werden? Was ist Aufgabe der Schulsozialarbeit, was ist Aufgabe anderer Stellen?</label><textarea id="t3" data-required="true" data-min="680"></textarea><button onclick="saveField('t3'); analyzeText('t3')">Antwort prüfen</button><div id="analysis_t3" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="4. Empowerment ohne Verantwortungsverschiebung">
+<div class="theory"><h2>Empowerment ohne Verantwortungsverschiebung</h2><p>Empowerment stärkt Handlungsfähigkeit, Selbstwirksamkeit und Stimme von Schüler:innen. Es bedeutet nicht, dass Schüler:innen strukturelle, finanzielle, rechtliche oder schützende Verantwortung übernehmen müssen.</p>
+<table><tr><th>Empowerment</th><th>Verantwortungsverschiebung</th></tr><tr><td>Schüler:in kennt Ansprechwege</td><td>Schüler:in soll Unterstützung allein organisieren</td></tr><tr><td>Schüler:innen geben Feedback zu Barrieren</td><td>Schüler:innen sollen Mobbing oder Schutzfragen selbst klären</td></tr><tr><td>Wahlmöglichkeiten und Beteiligung</td><td>Erwachsene ziehen sich aus Verfahren zurück</td></tr><tr><td>Stärken, Rechte und Stimme sichtbar machen</td><td>Scham und Risiko individualisieren</td></tr></table></div>
+<div class="science"><h3>Wissenschaftsbox: Empowerment und Struktur</h3><p>Empowerment ist kein „Du musst es nur selbst schaffen“. Fachlich angemessen ist eine doppelte Perspektive: Schüler:innen werden gestärkt, und zugleich werden Barrieren in Schule, Ganztag, Kommunikation und Netzwerk bearbeitet.</p></div>
+<div class="task"><label for="t4">Pflichtaufgabe: Formulieren Sie drei Beispiele für Empowerment und drei Beispiele für Verantwortungsverschiebung. Beschreiben Sie, wie Erwachsene Schutz- und Verfahrensverantwortung behalten.</label><textarea id="t4" data-required="true" data-min="640"></textarea><button onclick="saveField('t4'); analyzeText('t4')">Antwort prüfen</button><div id="analysis_t4" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="5. Ganztag und Alltag als Teilhaberäume">
+<div class="theory"><h2>Teilhabestrukturen im Ganztag und Schulalltag</h2><p>Viele Barrieren werden nicht im Beratungsgespräch sichtbar, sondern in Mensa, AG, Pause, Buswartezeit, digitaler Kommunikation und Übergängen.</p>
+<table><tr><th>Ort</th><th>Teilhaberisiko</th><th>Strukturelle Antwort</th></tr><tr><td>Mensa</td><td>allein sitzen, Kosten, Lautstärke, Scham</td><td>Sitzoptionen, Kostenweg, erwachsene Präsenz, Rückzugsoption</td></tr><tr><td>AG</td><td>Materialkosten, Auswahlhürden, Ausschluss</td><td>Materialpool, einfache Anmeldung, AG-Leitungsstandard</td></tr><tr><td>Pause</td><td>keine Gruppe, Konflikte, unsichere Orte</td><td>Buddy, offene Angebote, sichere Räume, Beobachtung</td></tr><tr><td>Buswartezeit</td><td>Rangordnung, Rangelei, wenig Struktur</td><td>Wartebereich, Aufsichtsklarheit, Meldeweg</td></tr><tr><td>digital</td><td>Infos kommen nicht an, Online-Anmeldung, Chatdynamiken</td><td>mehrere Wege, einfache Sprache, Medienregeln</td></tr></table></div>
+<div class="method"><h3>AG- und Ganztags-Kurzstandard</h3><ul><li>keine Falldetails per Messenger</li><li>Rückmeldung über Barrieren an feste Ansprechperson</li><li>Materialbedarf vorab prüfen</li><li>Teilnahme nicht an versteckten Kosten scheitern lassen</li><li>Ausschlussdynamiken früh melden</li><li>Feedback der Schüler:innen niedrigschwellig einholen</li></ul></div>
+<div class="task"><label for="t5">Pflichtaufgabe: Entwickeln Sie für Mensa, AG, Pause oder Buswartezeit eine konkrete Teilhabestruktur mit Zuständigkeit, Meldeweg, Datenschutzgrenze und Nachprüfung.</label><textarea id="t5" data-required="true" data-min="680"></textarea><button onclick="saveField('t5'); analyzeText('t5')">Antwort prüfen</button><div id="analysis_t5" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="6. Lotsenlogik und lokale Unterstützungswege">
+<div class="theory"><h2>Unterstützungswege und Lotsenlogik</h2><p>Lotsenlogik bedeutet: Schulsozialarbeit macht Zugänge verständlicher, begleitet erste Schritte und klärt Zuständigkeiten. Sie erledigt nicht alles stellvertretend, verhindert aber, dass Teilhabe an Formularen, Scham, Sprache oder unklaren Wegen scheitert.</p>
+<table><tr><th>Schritt</th><th>Leitfrage</th><th>Beispiel</th></tr><tr><td>1. Wahrnehmen</td><td>Welche Barriere zeigt sich?</td><td>Kind nimmt nicht am Ausflug teil</td></tr><tr><td>2. Diskret klären</td><td>Was ist bekannt, was nur Vermutung?</td><td>vertrauliche Nachfrage, keine Klassensituation</td></tr><tr><td>3. Zuständigkeit prüfen</td><td>Wer kann helfen?</td><td>BuT-Stelle, Förderverein, Schulträger, Beratung</td></tr><tr><td>4. Zugang erleichtern</td><td>Was ist der nächste kleine Schritt?</td><td>Formular erklären, Kontakt herstellen</td></tr><tr><td>5. Nachprüfen</td><td>Hat Teilhabe tatsächlich funktioniert?</td><td>Teilnahme, Würde, Rückmeldung</td></tr></table></div>
+<div class="method"><h3>Lokaler Unterstützungsweg als Platzhalter</h3><table><tr><th>Ebene</th><th>Mögliche Ansprechstelle</th><th>Klärung vor Ort</th></tr><tr><td>Schule</td><td>Schulsozialarbeit, Klassenleitung, Ganztag, Schulleitung</td><td>Wer koordiniert?</td></tr><tr><td>Schulgemeinschaft</td><td>Förderverein, Materialpool, Mensa-/AG-Verantwortliche</td><td>Welche Regeln gelten?</td></tr><tr><td>Kommune / Landkreis</td><td>BuT-Stelle, Jugendamt, Sozialamt, Beratungsstellen</td><td>Welche Formulare und Fristen?</td></tr><tr><td>Fachberatung</td><td>RZI, Schulpsychologie, externe Beratung</td><td>Wann wird angefragt?</td></tr></table></div>
+<div class="task"><label for="t6">Pflichtaufgabe: Entwickeln Sie einen lokalen Unterstützungsweg für eine wiederkehrende Barriere. Beschreiben Sie Wahrnehmung, diskrete Klärung, Zuständigkeit, nächsten Schritt und Nachprüfung.</label><textarea id="t6" data-required="true" data-min="720"></textarea><button onclick="saveField('t6'); analyzeText('t6')">Antwort prüfen</button><div id="analysis_t6" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="7. Methodenkoffer Barrierenabbau">
+<div class="method"><h2>Methodenkoffer</h2><table><tr><th>Methode</th><th>Ziel</th><th>Durchführung</th><th>Risiko</th></tr><tr><td>Teilhabe-Check</td><td>Barrieren strukturiert erkennen</td><td>Bereiche Sprache, Kosten, Raum, Gruppe, Ganztag, Digitales prüfen</td><td>nicht in Defizitlisten über Kinder umkippen lassen</td></tr><tr><td>Würdeschutz-Ampel</td><td>beschämende Verfahren vermeiden</td><td>Grün, Gelb, Rot für Kommunikations- und Unterstützungswege markieren</td><td>Rot nicht als Schuldzuweisung gegen Kolleg:innen nutzen</td></tr><tr><td>Netzwerklandkarte</td><td>Zuständigkeiten klären</td><td>Akteure, Beitrag, Grenze, nächster Schritt festhalten</td><td>Datenschutz und Einwilligung beachten</td></tr><tr><td>Materialpool-Konzept</td><td>praktische Teilhabe sichern</td><td>Leihmaterial diskret, allgemein und niedrigschwellig organisieren</td><td>keine „Armenkiste“ sichtbar machen</td></tr><tr><td>Mini-Feedback</td><td>Wirkung prüfen</td><td>kurze anonyme Rückfrage: Was hat geholfen, was fehlt?</td><td>keine verdeckte Fallabfrage</td></tr></table></div>
+<div class="task"><label for="t7">Pflichtaufgabe: Wählen Sie zwei Methoden aus dem Methodenkoffer und beschreiben Sie, wie Sie diese an Ihrer Schule konkret einsetzen würden.</label><textarea id="t7" data-required="true" data-min="640"></textarea><button onclick="saveField('t7'); analyzeText('t7')">Antwort prüfen</button><div id="analysis_t7" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="8. Fallwerkstatt und Branching-Szenarien">
+<div class="case"><h2>Fallwerkstatt</h2><p>In der Schule häufen sich drei Beobachtungen: Ein Kind nimmt nicht an einer AG teil, obwohl es Interesse zeigt. Ein weiteres Kind sitzt in der Mensa regelmäßig allein. Mehrere Sorgeberechtigte melden Kinder nicht für Ausflüge an, obwohl diese im Unterricht beworben werden. Im Team entstehen schnelle Deutungen: „Die Familien wollen nicht“ oder „Die Kinder müssen selbst fragen“.</p></div>
+<div class="task"><h3>Branching-Szenario: Was ist der beste erste Schritt?</h3><label for="branch1">Wählen Sie eine Option.</label><select id="branch1" data-required="true"><option value="">Bitte wählen</option><option value="bad1">Die Familien im Kollegium als desinteressiert benennen.</option><option value="bad2">Die Kinder auffordern, das Problem allein zu lösen.</option><option value="good">Barrieren nicht-zuschreibend prüfen und diskrete Unterstützungswege klären.</option><option value="bad3">Alle Betroffenen öffentlich auflisten, damit nichts vergessen wird.</option></select><button onclick="runBranch()">Entscheidung auswerten</button><div id="branchResult" class="feedback" aria-live="polite"></div></div>
+<div class="task"><label for="t8">Pflichtaufgabe: Bearbeiten Sie den Fall. Benennen Sie drei mögliche Barrieren, eine nicht-zuschreibende Deutung, einen würdesensiblen Unterstützungsweg und eine Netzwerklandkarte.</label><textarea id="t8" data-required="true" data-min="820"></textarea><button onclick="saveField('t8'); analyzeText('t8')">Antwort prüfen</button><div id="analysis_t8" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="9. Fehlerwerkstatt">
+<div class="errorbox"><h2>Fehlerwerkstatt: typische fachliche Fehlgriffe</h2><table><tr><th>Fehler</th><th>Risiko</th><th>Bessere Praxis</th></tr><tr><td>„Familie will nicht“</td><td>Zuschreibung, Vertrauensverlust</td><td>Zugang, Sprache, Kosten, Scham und Fristen prüfen</td></tr><tr><td>öffentliche Zahlungsabfrage</td><td>Beschämung</td><td>allgemeine Info plus vertraulicher Kontakt</td></tr><tr><td>Kind als Dolmetscher:in für sensible Themen</td><td>Überforderung, Datenschutzproblem</td><td>Sprachmittlung oder einfache schriftliche Information prüfen</td></tr><tr><td>Falldetails im Messenger</td><td>Datenschutzrisiko</td><td>nur organisatorische Hinweise, sensible Inhalte geschützt klären</td></tr><tr><td>Empowerment als „Mach das selbst“</td><td>Verantwortungsverschiebung</td><td>Stärkung plus erwachsene Verfahrensverantwortung</td></tr></table></div>
+<div class="task"><label for="t9">Pflichtaufgabe: Wählen Sie zwei Fehler aus und formulieren Sie jeweils eine fachlich bessere Vorgehensweise für Schulsozialarbeit.</label><textarea id="t9" data-required="true" data-min="560"></textarea><button onclick="saveField('t9'); analyzeText('t9')">Antwort prüfen</button><div id="analysis_t9" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="10. Datenschutz, Würde und Dokumentation">
+<div class="theory"><h2>Datenschutz und Dokumentationsgrenzen</h2><p>Barrierenabbau braucht Informationen. Gleichzeitig gilt: Es werden nur die Informationen dokumentiert und weitergegeben, die für den Unterstützungsweg erforderlich sind.</p>
+<table><tr><th>Dokumentieren</th><th>Nicht dokumentieren / vermeiden</th></tr><tr><td>beobachtete Barriere</td><td>wertende Zuschreibungen über Familien</td></tr><tr><td>vereinbarter nächster Schritt</td><td>Gerüchte, Vermutungen, Diagnosen ohne Grundlage</td></tr><tr><td>beteiligte Stellen nach Erforderlichkeit</td><td>unnötige Sozialdaten in offenen Listen</td></tr><tr><td>Nachprüfung</td><td>Falldetails per Messenger</td></tr><tr><td>Einwilligung / Zuständigkeit, wenn nötig</td><td>öffentliche Markierung einzelner Schüler:innen</td></tr></table></div>
+<div class="warn"><strong>Praxisregel:</strong> So wenig Daten wie möglich, so viel Klärung wie nötig. Würdeschutz ist Teil von Teilhabeschutz.</div>
+<div class="task"><label for="t10">Pflichtaufgabe: Beschreiben Sie, wie Sie einen Unterstützungsweg dokumentieren würden, ohne unnötige Sozialdaten, Diagnosen oder beschämende Markierungen zu erzeugen.</label><textarea id="t10" data-required="true" data-min="640"></textarea><button onclick="saveField('t10'); analyzeText('t10')">Antwort prüfen</button><div id="analysis_t10" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="11. Evaluation und Qualitätssicherung">
+<div class="theory"><h2>Evaluation: Wirkt die Unterstützung?</h2><p>Eine Maßnahme ist nicht erfolgreich, weil sie angeboten wurde. Sie ist erfolgreich, wenn Teilhabe tatsächlich besser möglich wird.</p>
+<table><tr><th>Indikator</th><th>Beispiel für Nachprüfung</th></tr><tr><td>Zugang</td><td>nimmt das Kind teil?</td></tr><tr><td>Würde</td><td>fühlt sich die Unterstützung nicht beschämend an?</td></tr><tr><td>Zugehörigkeit</td><td>gibt es Anschluss in Gruppe, Mensa, AG oder Pause?</td></tr><tr><td>Verständlichkeit</td><td>kommen Informationen an?</td></tr><tr><td>Nachhaltigkeit</td><td>funktioniert die Struktur auch ohne Einzelimprovisation?</td></tr><tr><td>Netzwerk</td><td>sind Zuständigkeiten geklärt?</td></tr></table></div>
+<div class="science"><h3>Qualitätsmanager-Blick</h3><p>Gute Unterstützung braucht nicht nur Einzelfalllösungen, sondern Standards: Wer erkennt Barrieren? Wer entscheidet über Materialhilfen? Wer informiert Ganztag und Klassenleitung? Wie wird Datenschutz gesichert? Wann wird nachgeprüft?</p></div>
+<div class="task"><label for="t11">Pflichtaufgabe: Entwickeln Sie fünf einfache Indikatoren, mit denen Sie prüfen können, ob ein Unterstützungsweg tatsächlich Teilhabe verbessert hat.</label><textarea id="t11" data-required="true" data-min="560"></textarea><button onclick="saveField('t11'); analyzeText('t11')">Antwort prüfen</button><div id="analysis_t11" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="12. Praxisformular Barrieren-Abbau-Plan">
+<div class="theory"><h2>Druckbarer Barrieren-Abbau-Plan</h2><div class="printcard"><h3>Praxisformular</h3><table><tr><th>Bereich</th><th>Eintragung</th></tr><tr><td>Zielgruppe / Setting</td><td class="lines"></td></tr><tr><td>sichtbare Barriere</td><td class="lines"></td></tr><tr><td>nicht-zuschreibende Deutung</td><td class="lines"></td></tr><tr><td>würdesensible Unterstützung</td><td class="lines"></td></tr><tr><td>beteiligte Akteure / Netzwerk</td><td class="lines"></td></tr><tr><td>nächster kleiner Schritt</td><td class="lines"></td></tr><tr><td>Datenschutz / Dokumentationsgrenze</td><td class="lines"></td></tr><tr><td>Nachprüfung / Indikatoren</td><td class="lines"></td></tr><tr><td>Verstetigung</td><td class="lines"></td></tr></table></div></div>
+<div class="task"><label for="t12">Pflichtaufgabe: Füllen Sie den Barrieren-Abbau-Plan in Textform für eine konkrete, anonymisierte Situation aus.</label><textarea id="t12" data-required="true" data-min="800"></textarea><button onclick="saveField('t12'); analyzeText('t12')">Antwort prüfen</button><div id="analysis_t12" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="13. Literatur, Standards und Ausblick">
+<div class="theory"><h2>Literatur und fachliche Orientierung</h2><ul><li>§ 13a SGB VIII: Schulsozialarbeit als sozialpädagogisches Angebot am Ort Schule in Zusammenarbeit mit Schule.</li><li>Niedersachsen: RZI als regionale Beratungs- und Unterstützungszentren für inklusive Schule.</li><li>Bildungs- und Teilhabepaket: mögliche Unterstützung bei Ausflügen, Schulbedarf, Lernförderung, Mittagessen und Teilhabeangeboten.</li><li>DBSH Berufsethik: Soziale Arbeit orientiert sich an Menschenrechten, sozialer Gerechtigkeit, gemeinsamer Verantwortung und Achtung der Vielfalt.</li><li>Schulisches Schutzkonzept, Ganztagskonzept, Medienkonzept, Datenschutzvorgaben und lokale Dienstanweisungen.</li></ul></div>
+<div class="theory"><h2>Einordnung in die Reihe</h2><p>Band 7 hat Teilhabe aus vier Blickrichtungen bearbeitet: Inklusion, Armut, Migration/Mehrsprachigkeit und Barrierenabbau. Band 8 kann daran anschließen, indem Kooperation, Netzwerk, Sozialraum und institutionelle Zusammenarbeit vertieft werden.</p></div>
+<div class="task"><label for="t13">Reflexionsaufgabe: Welche Struktur aus Band 7 sollte an Ihrer Schule als erstes dauerhaft eingeführt oder verbessert werden? Begründen Sie fachlich und nennen Sie den nächsten realistischen Schritt.</label><textarea id="t13" data-required="true" data-min="560"></textarea><button onclick="saveField('t13'); analyzeText('t13')">Antwort prüfen</button><div id="analysis_t13" class="analysis" aria-live="polite"></div></div>
+</section>
+
+<section class="card section" data-title="14. Abschluss, Transferauftrag und Zertifikat">
+<div class="case"><h2>Abschlussfall</h2><p>Eine Schule stellt fest, dass mehrere Schüler:innen Angebote des Ganztags, Ausflüge oder AGs nicht nutzen. Teilweise fehlen Materialien, teilweise kommen Informationen nicht an, teilweise wirken Schüler:innen beschämt oder ziehen sich zurück. Im Kollegium entstehen unterschiedliche Deutungen: „Die Familien wollen nicht“, „Die Kinder müssen selbst lernen zu fragen“, „Wir können nicht jedes Problem lösen.“ Die Schulsozialarbeit soll ein schulisches Verfahren entwickeln, wie Teilhabebarrieren erkannt, würdesensibel bearbeitet und durch Netzwerke abgebaut werden können.</p></div>
+<div class="theory"><h2>Bewertungsraster Transferauftrag</h2><table><tr><th>Kriterium</th><th>Erwartung</th></tr><tr><td>Barrierenanalyse</td><td>nicht-zuschreibend, mehrere Barriereformen berücksichtigt</td></tr><tr><td>Würdeschutz</td><td>Schamvermeidung, diskrete Verfahren, sichere Kommunikation</td></tr><tr><td>Rollenklärung</td><td>Schulsozialarbeit, Schule, Ganztag, RZI, Jugendhilfe und weitere Akteure abgegrenzt</td></tr><tr><td>Empowerment</td><td>Stärkung ohne Verantwortungsverschiebung</td></tr><tr><td>Datenschutz</td><td>minimale Dokumentation, keine Falldetails per Messenger</td></tr><tr><td>Evaluation</td><td>mindestens fünf überprüfbare Indikatoren</td></tr><tr><td>Verstetigung</td><td>aus Einzelfallhilfe wird eine schulische Teilhabestruktur</td></tr></table></div>
+<div class="task"><h3>Strukturierter Transferauftrag: schulische Teilhabestruktur entwickeln</h3><p>Bearbeiten Sie die Felder. Danach können Sie daraus einen zusammenhängenden Transfertext erzeugen.</p><div id="transferFields"></div><button onclick="buildTransfer()">Transfertext aus Feldern erzeugen</button><label for="transfer">Zusammenhängender Transfertext</label><textarea id="transfer" data-required="true" data-min="3200"></textarea><button onclick="saveField('transfer'); analyzeText('transfer'); updateCertificate()">Transfer prüfen</button><div id="analysis_transfer" class="analysis" aria-live="polite"></div></div>
+<div class="theory"><h2>Quiz / Gelingensnachweis</h2><p>Bestehensgrenze: mindestens 80 Prozent richtige Antworten.</p><div id="quiz"></div><button onclick="gradeQuiz()">Gelingensnachweis auswerten</button><div id="quizResult" class="feedback" aria-live="polite"></div></div>
+<div class="task"><h3>Selbsteinschätzung nach der Bearbeitung</h3><label>Ich kann Teilhabebarrieren nicht-zuschreibend erkennen.<select id="post1" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><label>Ich kann praktische Unterstützung würdesensibel planen.<select id="post2" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><label>Ich kann Netzwerk, Zuständigkeit und Datenschutz klären.<select id="post3" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><label>Ich kann Empowerment von Verantwortungsverschiebung unterscheiden.<select id="post4" data-required="true"><option value="">Bitte wählen</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><button onclick="showSelfEval()">Selbsteinschätzung auswerten</button><div id="selfEvalResult" class="analysis"></div></div>
+<div id="competence" class="competence"></div>
+<div id="certificate" class="certificate hidden"><h2>Abschlussnachweis</h2><p>Das Modul <strong>Band 7, Modul 4: Barrieren abbauen, praktische Unterstützung, Netzwerke und Empowerment</strong> wurde erfolgreich bearbeitet.</p><p><strong>Nachgewiesene Kompetenzen:</strong> Teilhabebarrieren erkennen, Unterstützungswege würdesensibel planen, Netzwerke aktivieren, Empowerment begrenzen, Datenschutz beachten, Wirkung prüfen und schulische Teilhabestrukturen entwickeln.</p><p>Name: <span id="certName">________________</span></p><p>Modul-ID: B7M4_V2_MODUL</p><p>Workload: 12 Zeitstunden</p><p>Datum: <span id="certDate"></span></p><button onclick="window.print()">Drucken / als PDF speichern</button></div>
+<div class="controls"><button onclick="showPortfolio()">Portfolio / Reflexionsmappe anzeigen</button><button onclick="exportData()">Bearbeitung exportieren</button><button onclick="sendData()">An Google Sheets senden</button></div>
+<div class="warn"><p><strong>Hinweis zur Online-Abgabe:</strong> Name, E-Mail, Bearbeitungsstand und Eingaben werden nur übermittelt, wenn die Zustimmung oben im Header gesetzt ist. Verwenden Sie weiterhin keine echten Falldaten.</p></div><div id="sendStatus" class="feedback" aria-live="polite"></div>
+</section>
+</main>
+</div>
+<footer>Version B7M4_V2_MODUL, Stand: Juni 2026. Dieses Modul ersetzt keine lokale Dienstanweisung, keine Rechtsberatung und keine Einzelfallentscheidung.</footer>
+<script>
+const APP_PUBLIC_URL = "https://script.google.com/macros/s/AKfycbx7qb2DebbAYK0TmSjnAWuyDo7H2-U4bynWDNc6LYqkmsgH6qmkoNvalYBHwE00Z5hkig/exec";
+const MODULE_ID = "B7M4_V2_MODUL";
+const TRANSFER_FIELDS = [
+["tf_zielgruppe","Zielgruppe / Setting"],["tf_barriere","Beobachtete Teilhabebarriere"],["tf_deutung","Nicht-zuschreibende Deutung"],["tf_unterstuetzung","Würdesensible Unterstützung"],["tf_netzwerk","Netzwerk / Zuständigkeiten"],["tf_rolle","Rollenklärung Schulsozialarbeit / Schule / Jugendhilfe / Schulpsychologie"],["tf_empowerment","Empowerment ohne Verantwortungsverschiebung"],["tf_ganztag","Ganztag / Schulalltag"],["tf_lotsenweg","Lokaler Unterstützungsweg / Lotsenlogik"],["tf_datenschutz","Datenschutz / Dokumentationsgrenzen"],["tf_material","Materialpool / praktische Ressource"],["tf_fehler","Fehlerwerkstatt / Risiken"],["tf_indikatoren","Evaluation / Indikatoren"],["tf_verstetigung","Verstetigung als Teilhabestruktur"]
+];
+const QUIZ = [
+{q:"Was bedeutet Barrierenabbau fachlich?",a:["Zugang, Würde und Teilhabe ermöglichen","Kinder an unveränderte Strukturen anpassen","nur einzelne Leistungen beantragen","Probleme öffentlich benennen"],c:0,cat:"Barrieren"},
+{q:"Was ist würdesensible Unterstützung?",a:["diskret, allgemein zugänglich und nicht beschämend","öffentlich sichtbar und kontrollierend","nur bei Beweisen","immer über die Klasse"],c:0,cat:"Würde"},
+{q:"Was ist Aufgabe von Schulsozialarbeit im Netzwerk?",a:["Lotsen, beraten, vernetzen, Barrieren sichtbar machen","Leistungen eigenständig bewilligen","Therapie ersetzen","alle Entscheidungen allein treffen"],c:0,cat:"Netzwerk"},
+{q:"Was ist Empowerment?",a:["Handlungsfähigkeit und Stimme stärken","Schutzverantwortung an Schüler:innen abgeben","Probleme allein lösen lassen","Bürokratie übertragen"],c:0,cat:"Empowerment"},
+{q:"Warum ist Ganztag wichtig?",a:["Dort zeigen sich viele Teilhabebarrieren im Alltag","Ganztag hat mit Teilhabe nichts zu tun","Nur Unterricht zählt","Mensa ist privat"],c:0,cat:"Ganztag"},
+{q:"Was gehört zur Lotsenlogik?",a:["wahrnehmen, diskret klären, zuständig machen, Zugang erleichtern, nachprüfen","sofort bewerten und melden","Kind auffordern, alles selbst zu klären","öffentliche Liste führen"],c:0,cat:"Lotsenlogik"},
+{q:"Was ist datenschutzsensibel?",a:["nur notwendige Informationen dokumentieren","alle Details in Messenger schreiben","Diagnosen vermuten","öffentliche Listen nutzen"],c:0,cat:"Datenschutz"},
+{q:"Was ist ein guter Wirkungsindikator?",a:["Teilhabe ist tatsächlich möglich und nicht beschämend","Angebot existiert auf Papier","mehr Listen wurden erstellt","Kind fragt häufiger allein"],c:0,cat:"Evaluation"},
+{q:"Was ist eine rote Praxis in der Würdeschutz-Ampel?",a:["Nachfrage vor der Klasse","vertrauliche Kontaktmöglichkeit","allgemeiner Hinweis an alle","diskretes Einzelgespräch"],c:0,cat:"Würde"},
+{q:"Was ist eine nicht-zuschreibende Deutung?",a:["Materialzugang prüfen statt Familie abwerten","Familie ist desinteressiert","Kind ist schwierig","Herkunft erklärt alles"],c:0,cat:"Barrieren"},
+{q:"Was darf Schulsozialarbeit nicht ersetzen?",a:["Leistungsbewilligung, Therapie und Fachdiagnostik","Beratung","Vernetzung","Teilhabeblick"],c:0,cat:"Rolle"},
+{q:"Warum braucht es Nachprüfung?",a:["weil erst dann sichtbar wird, ob Teilhabe besser möglich ist","weil Formulare wichtiger sind als Wirkung","weil Kontrolle im Vordergrund steht","weil Unterstützung dann beendet ist"],c:0,cat:"Evaluation"},
+{q:"Welche Formulierung ist würdesensibel?",a:["Bei Kostenfragen können Sie sich vertraulich melden","Wer nicht bezahlt hat, kommt nach vorne","Alle sehen gleich, wer Hilfe bekommt","Das Kind soll Geld mitbringen"],c:0,cat:"Würde"},
+{q:"Was gehört in eine Netzwerklandkarte?",a:["Akteure, Aufgaben, Grenzen, Zuständigkeiten","Gerüchte und Vermutungen","komplette Falldetails","öffentliche Namenslisten"],c:0,cat:"Netzwerk"},
+{q:"Was ist ein Materialpool?",a:["diskrete Struktur für Leihmaterial und Zugang","Sonderkiste für arme Kinder","öffentliche Ausgabeliste","Belohnungssystem"],c:0,cat:"Unterstützung"},
+{q:"Was bedeutet Verstetigung?",a:["Unterstützung wird zur verlässlichen Struktur","einmalige Improvisation","keine Nachprüfung","nur Einzelfallnotiz"],c:0,cat:"Struktur"},
+{q:"Was ist eine Teilhabebarriere?",a:["etwas, das Mitmachen, Zugehörigkeit oder Zugang erschwert","eine Eigenschaft des Kindes","immer eine Diagnose","nur eine Treppe"],c:0,cat:"Barrieren"},
+{q:"Was ist in Messenger-Kommunikation problematisch?",a:["Falldetails und Sozialdaten","Terminabsprachen ohne Falldetails","allgemeine Info","Raumklärung"],c:0,cat:"Datenschutz"},
+{q:"Was ist Grenze von Empowerment?",a:["Schutz- und Verfahrensverantwortung bleibt bei Erwachsenen","Schüler:innen entscheiden alles allein","Erwachsene ziehen sich zurück","Probleme werden individualisiert"],c:0,cat:"Empowerment"},
+{q:"Was bereitet dieses Modul für Band 8 vor?",a:["Kooperation, Netzwerk, Sozialraum und institutionelle Zusammenarbeit","Notengebung","Diagnostik","Fachunterricht"],c:0,cat:"Transfer"},
+{q:"Was ist fachlich problematisch an öffentlichen Zahlungslisten?",a:["Sie markieren und beschämen einzelne Personen","Sie fördern Teilhabe","Sie sichern Datenschutz","Sie sind immer notwendig"],c:0,cat:"Würde"},
+{q:"Was ist eine Aufgabe von RZI in Niedersachsen?",a:["Beratung und Unterstützung im Kontext inklusiver Schule","Bewilligung von BuT-Leistungen","Therapie","Notengebung"],c:0,cat:"Niedersachsen"},
+{q:"Welche Haltung passt zur Berufsethik Sozialer Arbeit?",a:["Menschenrechte, soziale Gerechtigkeit und Achtung von Vielfalt","Kontrolle vor Hilfe","öffentliche Beschämung","Diagnosen vermuten"],c:0,cat:"Standards"},
+{q:"Was ist gute Verstetigung?",a:["ein verlässliches Verfahren statt einmaliger Improvisation","jede Hilfe neu erfinden","keine Zuständigkeit festlegen","nur mündliche Absprachen"],c:0,cat:"Struktur"}
+];
+let state;let current=0;
+function loadState(){try{const raw=localStorage.getItem(MODULE_ID+"_state");const parsed=raw?JSON.parse(raw):{};return Object.assign({done:[],fields:{},quizScore:0,quizAnswers:{},quizSelection:null},parsed);}catch(e){return{done:[],fields:{},quizScore:0,quizAnswers:{},quizSelection:null};}}
+function saveState(){localStorage.setItem(MODULE_ID+"_state",JSON.stringify(state));}
+function sections(){return [...document.querySelectorAll('.section')];}
+function toggleNav(){document.getElementById('nav').classList.toggle('hidden');document.getElementById('layout').classList.toggle('full');}
+function render(){state=state||loadState();renderNav();restoreFields();renderTransferFields();renderQuiz();installAutosave();updateProgress();updateCertificate();renderCompetence();showCurrent();}
+function showCurrent(){sections().forEach((s,i)=>s.classList.toggle('active',i===current));}
+function renderNav(){const nav=document.getElementById('navButtons');const secs=sections();nav.innerHTML=secs.map((s,i)=>{const locked=i>0&&!state.done.includes(i-1);const title=s.dataset.title||('Abschnitt '+(i+1));return `<button class="navbtn ${locked?'locked':''} ${state.done.includes(i)?'done':''} ${i===current?'active':''}" onclick="go(${i})" ${locked?'disabled':''}>${state.done.includes(i)?'✓':'○'} ${i+1}. ${title}</button>`;}).join('');}
+function go(i){if(i>0&&!state.done.includes(i-1)){alert('Dieser Abschnitt wird erst nach Abschluss des vorherigen Abschnitts freigeschaltet.');return;}current=i;showCurrent();renderNav();window.scrollTo({top:0,behavior:'smooth'});}
+function completeSection(i){const sec=sections()[i];const fields=[...sec.querySelectorAll('[data-required="true"]')];for(const el of fields){const min=parseInt(el.dataset.min||'1',10);if(el.type==='checkbox'&&!el.checked){alert('Bitte bestätigen Sie die Pflichtangabe.');el.focus();return;}if(!el.value||(el.tagName==='TEXTAREA'&&el.value.trim().length<min)){alert('Bitte bearbeiten Sie zuerst alle Pflichtfelder dieses Abschnitts.');el.focus();return;}state.fields[el.id]=el.type==='checkbox'?el.checked:el.value;}if(i===sections().length-1&&!certificateReady()){alert('Der Abschluss ist erst möglich, wenn Quiz, Transferauftrag und Selbsteinschätzung vollständig sind.');return;}if(!state.done.includes(i))state.done.push(i);saveState();renderNav();updateProgress();updateCertificate();alert('Abschnitt abgeschlossen.');}
+function updateProgress(){const n=state.done.length,total=sections().length;document.getElementById('bar').style.width=(n/total*100)+'%';document.getElementById('progressText').textContent=`${n} / ${total} abgeschlossen`;}
+function saveField(id){const el=document.getElementById(id);if(el&&id){state.fields[id]=el.type==='checkbox'?el.checked:el.value;saveState();autosaveStatus();}}
+function restoreFields(){Object.entries(state.fields||{}).forEach(([id,val])=>{const el=document.getElementById(id);if(el){if(el.type==='checkbox')el.checked=!!val;else el.value=val;}});const nm=document.getElementById('learnerName');if(nm){nm.value=localStorage.getItem(MODULE_ID+'_name')||'';nm.oninput=()=>localStorage.setItem(MODULE_ID+'_name',nm.value);}}
+function installAutosave(){document.querySelectorAll('textarea,select,input').forEach(el=>{if(el.dataset.autosaveBound)return;el.dataset.autosaveBound='1';el.addEventListener('input',()=>saveField(el.id));el.addEventListener('change',()=>saveField(el.id));});}
+function autosaveStatus(){const el=document.getElementById('autosave');if(el)el.textContent='Auto-Save: gespeichert um '+new Date().toLocaleTimeString('de-DE');}
+function analyzeText(id){const el=document.getElementById(id),box=document.getElementById('analysis_'+id);if(!el||!box)return;const text=el.value.toLowerCase();const markers=['barriere','teilhabe','würde','unterstützung','netzwerk','empowerment','datenschutz','ganztag','mensa','ag','lotsen','zuständigkeit','evaluation','indikator','materialpool','scham','zugang','nachprüfung','rzi','but','förderverein','jugendhilfe','schulpsychologie','struktur','verstetigung','berufsethik','menschenrechte'];const sensitive=['diagnose','adresse','straße','adhs','autismus','geburtsdatum','aktenzeichen','vater heißt','mutter heißt','krankheit','trauma','asylstatus'];const found=markers.filter(m=>text.includes(m));const sens=sensitive.filter(s=>text.includes(s));let html=`<strong>Fachliche Marker:</strong> ${found.length?found.join(', '):'noch wenige Marker sichtbar'}.`;if(sens.length)html+=`<p class="bad">Datenschutzwarnung: Prüfen Sie, ob sensible oder identifizierende Angaben anonymisiert werden müssen. Gefundene Hinweise: ${sens.join(', ')}.</p>`;const min=parseInt(el.dataset.min||'0',10);if(el.tagName==='TEXTAREA'&&el.value.trim().length<min)html+=`<p class="bad">Mindestlänge noch nicht erreicht: ${el.value.trim().length} / ${min} Zeichen.</p>`;if(id==='transfer')html+=transferStructureFeedback(el.value);box.innerHTML=html;saveField(id);renderCompetence();updateCertificate();}
+function transferStructureFeedback(text){const t=text.toLowerCase();const req=[['Zielgruppe/Setting',['zielgruppe','klasse','gruppe','ganztag']],['Barriere',['barriere','hindernis','zugang']],['Würde/Scham',['würde','scham','diskret','beschämung']],['Netzwerk',['netzwerk','zuständigkeit','förderverein','rzi','jugendhilfe','but']],['Rollenklärung',['schulsozialarbeit','schule','jugendhilfe','schulpsychologie']],['Empowerment',['empowerment','selbstwirksamkeit','verantwortungsverschiebung']],['Datenschutz',['datenschutz','anonym','dokumentation']],['Evaluation',['evaluation','indikator','nachprüfung']],['Verstetigung',['struktur','verstetigung','verfahren']]];const ok=req.filter(r=>r[1].some(k=>t.includes(k)));return `<p><strong>Transfer-Mindeststruktur:</strong> ${ok.length} / ${req.length} Bereiche sichtbar. ${ok.length>=8?'<span class="good">Ausreichend strukturiert.</span>':'<span class="bad">Bitte zentrale Bereiche ergänzen.</span>'}</p>`;}
+function renderTransferFields(){const wrap=document.getElementById('transferFields');if(!wrap||wrap.dataset.rendered)return;wrap.dataset.rendered='1';wrap.innerHTML=TRANSFER_FIELDS.map(f=>`<label>${f[1]}<textarea id="${f[0]}" data-min="90"></textarea></label>`).join('');restoreFields();installAutosave();}
+function buildTransfer(){const parts=[];TRANSFER_FIELDS.forEach(f=>{const v=(document.getElementById(f[0])?.value||'').trim();if(v)parts.push(`${f[1]}:\n${v}`);});const txt=parts.join('\n\n');const transfer=document.getElementById('transfer');if(transfer){transfer.value=txt;saveField('transfer');analyzeText('transfer');}}
+function runBranch(){const val=document.getElementById('branch1')?.value;const box=document.getElementById('branchResult');if(!box)return;if(val==='good')box.innerHTML='<span class="good">Fachlich passend.</span> Erst Barrieren nicht-zuschreibend prüfen, dann würdesensibel und datenschutzsensibel handeln.';else if(!val)box.innerHTML='<span class="bad">Bitte eine Option wählen.</span>';else box.innerHTML='<span class="bad">Fachlich riskant.</span> Diese Option erzeugt Zuschreibung, Beschämung oder Verantwortungsverschiebung.';}
+function getQuizSelection(){if(!state.quizSelection||!Array.isArray(state.quizSelection)||state.quizSelection.length!==20){const ids=QUIZ.map((_,i)=>i);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]];}state.quizSelection=ids.slice(0,20);saveState();}return state.quizSelection;}
+function renderQuiz(){const q=document.getElementById('quiz');if(!q)return;const selected=getQuizSelection();q.innerHTML=selected.map((quizIndex,idx)=>{const item=QUIZ[quizIndex];const opts=item.a.map((o,j)=>`<label><input type="radio" name="q${idx}" value="${j}" ${state.quizAnswers[idx]==j?'checked':''} onchange="state.quizAnswers[${idx}]=${j};saveState()"> ${o}</label>`).join('');return `<fieldset class="q"><legend><strong>${idx+1}. ${item.q}</strong></legend>${opts}</fieldset>`;}).join('');}
+function gradeQuiz(){const selected=getQuizSelection();let score=0;const cats={};selected.forEach((quizIndex,i)=>{const item=QUIZ[quizIndex];const chosen=state.quizAnswers[i];cats[item.cat]=cats[item.cat]||{ok:0,total:0};cats[item.cat].total++;if(Number(chosen)===item.c){score++;cats[item.cat].ok++;}});state.quizScore=score;saveState();const need=Math.ceil(selected.length*.8);const catRows=Object.entries(cats).map(([k,v])=>`<tr><td>${k}</td><td>${v.ok} / ${v.total}</td></tr>`).join('');document.getElementById('quizResult').innerHTML=`Ergebnis: <strong>${score} / ${selected.length}</strong>. Bestehensgrenze: ${need}.<table><tr><th>Bereich</th><th>Treffer</th></tr>${catRows}</table>`;updateCertificate();renderCompetence();}
+function showSelfEval(){const pre=[1,2,3,4].map(i=>Number(document.getElementById('pre'+i)?.value||0));const post=[1,2,3,4].map(i=>Number(document.getElementById('post'+i)?.value||0));const sum=a=>a.reduce((x,y)=>x+y,0);const box=document.getElementById('selfEvalResult');box.innerHTML=`Vorher: <strong>${sum(pre)} / 20</strong>, nachher: <strong>${sum(post)} / 20</strong>. Veränderung: <strong>${sum(post)-sum(pre)}</strong>.`;}
+function certificateReady(){const transfer=(document.getElementById('transfer')?.value||'');const needQuiz=Math.ceil(20*.8);const postComplete=[1,2,3,4].every(i=>document.getElementById('post'+i)?.value);const t=transfer.toLowerCase();const areas=['barriere','würde','netzwerk','empowerment','datenschutz','evaluation','struktur','schulsozialarbeit','zuständigkeit'];const areaCount=areas.filter(a=>t.includes(a)).length;return(state.quizScore||0)>=needQuiz&&transfer.trim().length>=3200&&postComplete&&areaCount>=8;}
+function updateCertificate(){const cert=document.getElementById('certificate');if(!cert)return;cert.classList.toggle('hidden',!certificateReady());const cn=document.getElementById('certName');if(cn)cn.textContent=document.getElementById('learnerName')?.value||'________________';const cd=document.getElementById('certDate');if(cd)cd.textContent=new Date().toLocaleDateString('de-DE');}
+function renderCompetence(){const box=document.getElementById('competence');if(!box)return;const txt=Object.values(state.fields||{}).join(' ').toLowerCase();const areas=[['Barrieren erkennen',['barriere','zugang','teilhabe']],['Würdeschutz',['würde','scham','diskret']],['Netzwerk',['netzwerk','zuständigkeit','rzi','jugendhilfe','schulpsychologie']],['Empowerment',['empowerment','selbstwirksamkeit','verantwortungsverschiebung']],['Ganztag',['ganztag','mensa','ag','pause']],['Datenschutz',['datenschutz','anonym','dokumentation']],['Evaluation',['evaluation','indikator','nachprüfung']],['Struktur',['struktur','verstetigung','verfahren','materialpool']],['Hochschulniveau',['berufsethik','menschenrechte','soziale gerechtigkeit','fachstandard']]];box.innerHTML='<h3>Kompetenz-Ampel</h3><table><tr><th>Bereich</th><th>Status</th></tr>'+areas.map(a=>{const count=a[1].filter(k=>txt.includes(k)).length;const st=count>=2?'<span class="good">sicher sichtbar</span>':count===1?'<span class="warningText">teilweise sichtbar</span>':'<span class="bad">noch wenig sichtbar</span>';return `<tr><td>${a[0]}</td><td>${st}</td></tr>`;}).join('')+'</table>';}
+function showPortfolio(){const w=window.open('', '_blank');const esc=s=>String(s||'').replace(/[&<>]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));const rows=Object.entries(state.fields||{}).filter(([k,v])=>String(v).trim()).map(([k,v])=>`<h3>${esc(k)}</h3><pre>${esc(v)}</pre>`).join('');w.document.write(`<html><head><title>Portfolio ${MODULE_ID}</title><style>body{font-family:Arial,sans-serif;line-height:1.5;padding:24px}pre{white-space:pre-wrap;border:1px solid #ccc;padding:10px;border-radius:8px}</style></head><body><h1>Portfolio / Reflexionsmappe</h1><p>Modul: ${MODULE_ID}</p><p>Quiz: ${state.quizScore||0} / 20</p>${rows}</body></html>`);w.document.close();}
+function exportData(){const data={module:MODULE_ID,title:document.title,done:state.done,fields:state.fields,quizScore:state.quizScore,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=MODULE_ID+'_bearbeitung.json';a.click();}
+
+function manualSave(){
+  saveState();
+  const status=document.getElementById('autosave');
+  const topStatus=document.getElementById('sendStatusTop');
+  if(status) status.textContent='Zwischengespeichert: '+new Date().toLocaleTimeString('de-DE');
+  if(topStatus){
+    topStatus.textContent='Zwischengespeichert.';
+    topStatus.classList.remove('badmsg');
+    topStatus.classList.add('goodmsg');
+  }
+}
+
+function getOpenSections(){
+  return sections().map((s,i)=>state.done.includes(i)?null:(s.dataset.title||('Abschnitt '+(i+1)))).filter(Boolean);
+}
+
+async function sendData(){
+  const status=document.getElementById('sendStatus');
+  const topStatus=document.getElementById('sendStatusTop');
+  const setStatus=(message,good=false)=>{
+    if(status) status.textContent=message;
+    if(topStatus){
+      topStatus.textContent=message;
+      topStatus.classList.toggle('goodmsg',!!good);
+      topStatus.classList.toggle('badmsg',!good);
+    }
+  };
+
+  const name=(document.getElementById('learnerName')?.value||'').trim();
+  const email=(document.getElementById('userEmail')?.value||'').trim();
+  const privacy=document.getElementById('privacyConfirm')?.checked;
+  const consent=document.getElementById('sendConfirm')?.checked;
+
+  if(!name){setStatus('Bitte Namen im Header eintragen.');return;}
+  if(!email){setStatus('Bitte E-Mail-Adresse im Header eintragen.');return;}
+  if(!privacy){setStatus('Bitte bestätigen Sie im Header, dass keine identifizierenden Falldaten enthalten sind.');return;}
+  if(!consent){setStatus('Bitte stimmen Sie im Header der Online-Übermittlung zu.');return;}
+  if(!APP_PUBLIC_URL||APP_PUBLIC_URL.includes('HIER_DEINE')){
+    setStatus('Online-Abgabe ist vorbereitet, aber noch nicht aktiviert.');
+    return;
+  }
+
+  saveState();
+  const offeneAufgaben=getOpenSections();
+  const payload={
+    name:name,
+    email:email,
+    module:MODULE_ID,
+    moduleTitle:'Band 7 Modul 4: Barrieren abbauen, praktische Unterstützung, Netzwerke und Empowerment',
+    completedSections:state.done.length,
+    progressPercent:Math.round((state.done.length/sections().length)*100),
+    erledigt:state.done.length,
+    fortschritt:Math.round((state.done.length/sections().length)*100),
+    quizScore:state.quizScore||0,
+    offeneAufgaben:offeneAufgaben,
+    fields:state.fields||{},
+    checks:Object.fromEntries(Object.entries(state.fields||{}).filter(([k,v])=>typeof v==='boolean')),
+    createdAt:new Date().toISOString()
+  };
+
+  try{
+    await fetch(APP_PUBLIC_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    setStatus(offeneAufgaben.length?'Gesendet. Es gibt noch offene Abschnitte; der aktuelle Stand wurde gespeichert.':'Gesendet. Bearbeitungsstand wurde gespeichert.',true);
+  }catch(e){
+    setStatus('Übermittlung fehlgeschlagen: '+e.message);
+  }
+}
+
+function resetProgress(){if(confirm('Fortschritt dieses Moduls wirklich zurücksetzen?')){localStorage.removeItem(MODULE_ID+'_state');state=loadState();current=0;render();}}
+document.addEventListener('DOMContentLoaded',render);
+</script>
+</body>
+</html>
