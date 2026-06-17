@@ -42,7 +42,6 @@ footer{padding:30px;text-align:center;color:var(--muted)}:focus-visible{outline:
 <label>E-Mail<input id="userEmail" type="email" placeholder="name@example.de" autocomplete="email"></label>
 <label class="header-consent"><input type="checkbox" id="privacyConfirm" onchange="saveField('privacyConfirm')"> Keine identifizierenden Falldaten enthalten</label>
 <label style="max-width:320px"><input type="checkbox" id="sendConsent" onchange="saveCheckbox('sendConsent')"> Online-Übermittlung zustimmen</label>
-<label class="header-consent"><input type="checkbox" id="sendConfirm" onchange="saveField('sendConfirm')"> Online-Übermittlung zustimmen</label>
 <button type="button" onclick="manualSave()">Zwischenspeichern</button>
 <button type="button" onclick="sendData()">Absenden</button>
 <span id="sendStatusTop" class="header-send-status" aria-live="polite"></span>
@@ -284,7 +283,7 @@ async function sendData(){
   const name=(document.getElementById('learnerName')?.value||'').trim();
   const email=(document.getElementById('userEmail')?.value||'').trim();
   const privacy=document.getElementById('privacyConfirm')?.checked;
-  const consent=document.getElementById('sendConfirm')?.checked;
+  const consent=document.getElementById('sendConsent')?.checked;
 
   if(!name){setStatus('Bitte Namen im Header eintragen.');return;}
   if(!email){setStatus('Bitte E-Mail-Adresse im Header eintragen.');return;}
